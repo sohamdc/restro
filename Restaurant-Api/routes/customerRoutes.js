@@ -28,4 +28,21 @@ router.post("/", async (req, res) => {
   }
 });
 
+
+router.delete('/:id', async (req, res) => {
+  
+    const customerID = req.params.id;
+    //const customerFind = await Customer.findById({ _id: customerID })
+
+
+    await Customer.deleteOne({ _id: customerID }).then((res) => {
+      res.status(200).send({ message: 'Customer deleted successfully', customerID });
+    }).catch((e)=>{
+      res.send('Some error',e)
+    })
+
+  }
+ 
+);
+
 module.exports = router;

@@ -1,3 +1,4 @@
+require('./config/db')
 const express = require("express");
 const connectDB = require("./config/db");
 
@@ -10,6 +11,7 @@ const kitchenStaffRoutes = require("./routes/kitchenStaffRoutes");
 const cashierRoutes = require("./routes/cashierRoutes");
 const managerRoutes = require("./routes/managerRoutes");
 const inventoryRoutes = require("./routes/inventoryRoutes");
+const menuItemRoutes = require("./routes/menuItemRoutes")
 
 // Initialize Express app
 const app = express();
@@ -18,7 +20,7 @@ const app = express();
 app.use(express.json()); // For parsing application/json
 
 // Connect to MongoDB
-connectDB();
+//connectDB();
 
 // Routes
 app.use("/api/customers", customerRoutes); // Customer routes
@@ -29,6 +31,7 @@ app.use("/api/kitchenstaff", kitchenStaffRoutes); // Kitchen staff routes
 app.use("/api/cashiers", cashierRoutes); // Cashier routes
 app.use("/api/managers", managerRoutes); // Manager routes
 app.use("/api/inventory", inventoryRoutes); // Inventory routes
+app.use("/api/menuitem", menuItemRoutes);  //  menu Item Routes
 
 // Default route
 app.get("/", (req, res) => {
